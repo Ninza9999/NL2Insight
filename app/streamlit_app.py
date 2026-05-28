@@ -10,6 +10,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from agent.nl2insight import run_query
 
+# Auto-build DB if it doesn't exist (runs on Streamlit Cloud first boot)
+from db.setup_db import load_data
+from pathlib import Path
+if not Path("db/olist.db").exists():
+    load_data()
+
 # ─── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="NL2Insight — Business Analytics",
