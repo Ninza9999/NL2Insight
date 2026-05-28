@@ -48,13 +48,16 @@ def run_query(question: str) -> dict:
         insight = generate_insight(question, result["dataframe"])
 
     # Step 3 — Log everything
-    log_interaction(
-        question   = question,
-        sql        = result["sql"],
-        rows       = len(result["dataframe"]) if result["dataframe"] is not None else 0,
-        confidence = result["confidence"],
-        error      = result["error"]
-    )
+    try:
+        log_interaction(
+            question   = question,
+            sql        = result["sql"],
+            rows       = len(result["dataframe"]) if result["dataframe"] is not None else 0,
+            confidence = result["confidence"],
+            error      = result["error"]
+        )
+    except Exception:
+        pass  # Logging is optional — don't crash the app if it fails
 
     return {
         "sql":        result["sql"],
