@@ -16,6 +16,7 @@ LOG_PATH = Path(__file__).parent.parent / "logs" / "query_log.csv"
 
 def log_interaction(question, sql, rows, confidence, error):
     """Appends every query to a CSV log file."""
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True) 
     file_exists = LOG_PATH.exists()
     with open(LOG_PATH, "a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
