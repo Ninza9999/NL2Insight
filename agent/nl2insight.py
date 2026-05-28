@@ -15,13 +15,26 @@ from agent.insight_writer import generate_insight
 LOG_PATH = Path(__file__).parent.parent / "logs" / "query_log.csv"
 
 def log_interaction(question, sql, rows, confidence, error):
-    """Appends every query to a CSV log file."""
-    LOG_PATH.parent.mkdir(parents=True, exist_ok=True) 
-    file_exists = LOG_PATH.exists()
-    with open(LOG_PATH, "a", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=[
-            "timestamp", "question", "sql", "rows_returned", "confidence", "error"
-        ])
+    """Logs to file locally, skips silently on read-only cloud."""
+    try:
+        LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        file_exists = LOG_PATH.exists()
+        with open(LOG_PATH, "a", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=[
+                "timestamp", "question", "sql", "rows_returned", "confidence", "error"
+            ])
+            if not file_exists:
+                writer.writeheader()
+            writer.writerow({
+                "timestamp":     datetime.now().isoformat(),
+                "question":      question,
+                "sql":           sql,
+                "rows_returned": rows,
+                "confidence":    confidence,
+                "error":         error or ""
+            })
+    except Exception:
+        pass
         if not file_exists:
             writer.writeheader()
         writer.writerow({
