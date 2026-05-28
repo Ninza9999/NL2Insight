@@ -104,6 +104,6 @@ GITHUB_TOKEN=your_github_token_here
 
 ---
 
-Built by **Nikhil Dalal** — [GitHub](https://github.com/Ninza9999) | [LinkedIn](linkedin.com/in/ nikhil-dalal-3544bb231
+Built by **Nikhil Dalal** 
 
 )
