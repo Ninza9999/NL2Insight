@@ -15,7 +15,7 @@ from agent.insight_writer import generate_insight
 LOG_PATH = Path(__file__).parent.parent / "logs" / "query_log.csv"
 
 def log_interaction(question, sql, rows, confidence, error):
-    """Logs to file locally, skips silently on read-only cloud."""
+    """Logs locally, silently skips on read-only cloud filesystem."""
     try:
         LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
         file_exists = LOG_PATH.exists()

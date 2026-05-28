@@ -1,9 +1,12 @@
 # app/streamlit_app.py
 
+# app/streamlit_app.py
+
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
+# Auto-build DB on first run (Streamlit Cloud has no DB file)
 DB_FILE = Path(__file__).parent.parent / "db" / "olist.db"
 if not DB_FILE.exists():
     from db.setup_db import load_data
@@ -14,12 +17,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from agent.nl2insight import run_query
-
-# Auto-build DB if it doesn't exist (runs on Streamlit Cloud first boot)
-from db.setup_db import load_data
-from pathlib import Path
-if not Path("db/olist.db").exists():
-    load_data()
 
 # ─── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
