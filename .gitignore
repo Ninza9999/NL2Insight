@@ -5,3 +5,5 @@ __pycache__/
 .DS_Store
 logs/query_log.csv
 data/raw/
+data/raw/olist_geolocation_dataset.csv
+data/raw/iris.data.csv
