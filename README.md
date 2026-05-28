@@ -89,6 +89,8 @@ python db/setup_db.py
 streamlit run app/streamlit_app.py
 ```
 
+Add a `.env` file with:
+GITHUB_TOKEN=your_github_token_here
 
 ---
 
@@ -102,4 +104,6 @@ streamlit run app/streamlit_app.py
 
 ---
 
-Built by **Nikhil Dalal** — [GitHub](https://github.com/Ninza9999) | [LinkedIn](linkedin.com/in/ nikhil-dalal-3544bb231)
+Built by **Nikhil Dalal** — [GitHub](https://github.com/Ninza9999) | [LinkedIn](linkedin.com/in/ nikhil-dalal-3544bb231
+
+)
