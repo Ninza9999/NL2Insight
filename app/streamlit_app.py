@@ -4,6 +4,11 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
+DB_FILE = Path(__file__).parent.parent / "db" / "olist.db"
+if not DB_FILE.exists():
+    from db.setup_db import load_data
+    load_data()
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
