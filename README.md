@@ -89,9 +89,6 @@ python db/setup_db.py
 streamlit run app/streamlit_app.py
 ```
 
-Add a `.env` file with:
-GITHUB_TOKEN=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
-
 
 ---
 
